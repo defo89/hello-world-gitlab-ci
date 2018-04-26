@@ -1,0 +1,41 @@
+---
+- name: install nginx
+  yum:
+    update_cache: yes
+    name: nginx
+    state: present
+  tags: [ 'packages' ]
+
+- name: remove web root directory if exists
+  file:
+    path: "{{ nginx_web_root }}"
+    state: absent
+
+- name: create web root directory
+  file:
+    path: "{{ nginx_web_root }}"
+    owner: "{{ nginx_user }}"
+    group: "{{ nginx_group }}"
+    mode: 0775
+    state: directory
+
+- name: generate and copy nginx configuration file to server
+  template: 
+    src: etc.nginx.conf.j2
+    dest: "{{ nginx_config_file }}"
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart nginx
+
+- name: generate and copy index.html file to server
+  template: 
+    src: index.html.j2
+    owner: "{{ nginx_user }}"
+    group: "{{ nginx_group }}"    
+    dest: "{{ nginx_web_root }}/index.html"  
+
+- name: enable and start http
+  service:
+    name: nginx
+    enabled: yes

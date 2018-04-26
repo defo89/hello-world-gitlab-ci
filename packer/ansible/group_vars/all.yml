@@ -1,0 +1,11 @@
+---
+ansuser_name: manager
+ansuser_comment: "Management User"
+ansuser_group: wheel
+jumpbox_sshkey: files/id_rsa.pub
+
+port_web: 80
+nginx_web_root: /var/www
+nginx_config_file: /etc/nginx/nginx.conf
+nginx_user: nginx
+nginx_group: nginx

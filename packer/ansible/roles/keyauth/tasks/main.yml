@@ -1,0 +1,28 @@
+---
+- name: make sure 'wheel' group is present
+  group:
+    name: wheel
+    state: present
+
+- name: passwordless sudo for 'wheel' group
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    regexp: '^%wheel'
+    line: '%wheel ALL=(ALL) NOPASSWD: ALL'
+    validate: visudo -cf %s
+
+- name: create remote user
+  user:
+    name: "{{ ansuser_name }}"
+    comment: "{{ ansuser_comment }}"
+    group: "{{ ansuser_group }}"
+    generate_ssh_key: yes
+    ssh_key_bits: 2048
+    ssh_key_file: .ssh/id_rsa
+
+- name: set authorized key took from file
+  authorized_key:
+    user: "{{ ansuser_name }}"
+    state: present
+    key: "{{ lookup('file', jumpbox_sshkey ) }}"
