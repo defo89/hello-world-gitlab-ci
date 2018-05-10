@@ -31,5 +31,5 @@ build-ami stage:
 plan stage:
 - run **terraform plan** and copy the plan file to an S3 bucket
 
-deploy satge:
+deploy stage:
 - copy the plan file back from an S3 bucket locally and run  **terraform apply**
