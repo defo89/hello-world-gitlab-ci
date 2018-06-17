@@ -33,7 +33,7 @@ packer validate:
 terraform validate:
   stage: validate
   script:
-    - cd ../$TF_DIR && terraform validate
+    - cd ../$TF_DIR && terraform validate -var-file=aws-demo.tfvars
 
 build-ami:
   stage: build
@@ -41,13 +41,14 @@ build-ami:
     name: production
   script:
     - cd ../$PACKER_DIR && find . -maxdepth 1 -name '*.json' -print0 | xargs -t0n1 packer build
+  when: manual
   only:
     - master
 
 plan:
   stage: plan
   script:
-    - cd ../$TF_DIR && terraform plan -out=$PLAN
+    - cd ../$TF_DIR && terraform plan -var-file=aws-demo.tfvars -out=$PLAN
     - cd ../$TF_DIR && aws s3 cp $PLAN s3://$S3_BUCKET/$PLAN
   artifacts:
     name: plan
