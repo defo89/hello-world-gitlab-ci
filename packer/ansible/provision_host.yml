@@ -6,6 +6,5 @@
   become: true  
   gather_facts: false  
   roles:
-    - keyauth
     - common
     - web
