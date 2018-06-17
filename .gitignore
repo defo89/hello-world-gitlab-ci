@@ -1,9 +1,3 @@
-# keys folder
-**/**/keys/
-
-# ansible files
-**/ansible/files/
-
 [terraform]
 
 #  Local .terraform directories
@@ -14,7 +8,7 @@
 *.tfstate.*
 
 # .tfvars files
-*.tfvars
+# *.tfvars
 
 [macos]
 
