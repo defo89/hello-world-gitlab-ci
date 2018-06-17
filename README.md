@@ -173,6 +173,9 @@ Outputs:
 
 ALB DNS Name = default-1781065290.eu-west-1.elb.amazonaws.com
 Bastion DNS Name = ec2-34-247-176-235.eu-west-1.compute.amazonaws.com
+
+# destroy the environment
+❯ terraform destroy -var-file=aws-demo.tfvars
 ```
 
 # Using Gitlab CI
