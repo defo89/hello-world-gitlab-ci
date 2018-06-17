@@ -167,15 +167,18 @@ instance_type = "t2.micro"
 ❯ terraform validate -var-file=aws-demo.tfvars
 ❯ terraform apply -var-file=aws-demo.tfvars
 -- snip --
-Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
+Apply complete! Resources: 32 added, 0 changed, 0 destroyed.
 
 Outputs:
 
 ALB DNS Name = default-1781065290.eu-west-1.elb.amazonaws.com
 Bastion DNS Name = ec2-34-247-176-235.eu-west-1.compute.amazonaws.com
 
+
 # destroy the environment
 ❯ terraform destroy -var-file=aws-demo.tfvars
+-- snip --
+Destroy complete! Resources: 32 destroyed.
 ```
 
 # Using Gitlab CI
