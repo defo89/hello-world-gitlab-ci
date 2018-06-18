@@ -217,9 +217,11 @@ nginx (pid 2625 2622) is running...
 Destroy complete! Resources: 32 destroyed.
 ```
 
-AMI and snaphot needs to be removed manually.
+Deregister the AMI created by Packer.
 
 ![AMI deregister](img/ami-deregister.png)
+
+Delete the snaphot to avoid being charged for storing it.
 
 ![Snapshot delete](img/snapshot-delete.png)
 
