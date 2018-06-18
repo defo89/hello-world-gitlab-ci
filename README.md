@@ -6,7 +6,7 @@ It was created mainly for learning purposes and consists of the following buildi
 - Infrastructure is provisioned using [Terraform](https://www.terraform.io) module.
 - Gitlab CI orchestrates actions with Packer and Terraform.
 
-*Note*
+**Note**
 - Public and private keys provided are just for demo purposes 
 - You are encouraged to create your own ones and edit the *resource "aws_key_pair"* entry in the *aws-demo.tf* file
 
