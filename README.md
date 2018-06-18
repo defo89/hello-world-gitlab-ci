@@ -173,11 +173,40 @@ Apply complete! Resources: 32 added, 0 changed, 0 destroyed.
 
 Outputs:
 
-ALB DNS Name = default-1781065290.eu-west-1.elb.amazonaws.com
-Bastion DNS Name = ec2-34-247-176-235.eu-west-1.compute.amazonaws.com
+ALB DNS Name = default-397873677.eu-west-1.elb.amazonaws.com
+Bastion DNS Name = ec2-34-247-38-196.eu-west-1.compute.amazonaws.com
+```
 
+**Test web access**
 
-# destroy the environment
+![Website](img/website.png)
+
+**Access the instances**
+
+```
+# ssh to bastion host
+❯ ssh -i aws_fake_key ubuntu@ec2-34-247-38-196.eu-west-1.compute.amazonaws.com
+Are you sure you want to continue connecting (yes/no)? yes
+ubuntu@ip-10-172-1-73:~$
+
+# ssh to the instance
+❯ ssh -A ubuntu@ec2-34-247-38-196.eu-west-1.compute.amazonaws.com
+ubuntu@ip-10-172-1-73:~$ ssh ec2-user@10.172.82.192
+Warning: Permanently added '10.172.82.192' (ECDSA) to the list of known hosts.
+
+       __|  __|_  )
+       _|  (     /   Amazon Linux AMI
+      ___|\___|___|
+
+https://aws.amazon.com/amazon-linux-ami/2018.03-release-notes/
+[ec2-user@ip-10-172-82-192 ~]$ service nginx status
+nginx (pid 2625 2622) is running...
+[ec2-user@ip-10-172-82-192 ~]$
+```
+
+**Destroy the environment**
+
+```
 ❯ terraform destroy -var-file=aws-demo.tfvars
 -- snip --
 Destroy complete! Resources: 32 destroyed.
