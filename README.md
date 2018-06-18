@@ -12,6 +12,8 @@ It was created mainly for learning purposes and consists of the following buildi
 Terraform state and plan files are stored on S3 bucket, so it needs to be created beforehand.
 No public access is required.
 
+![S3 state](img/s3-state.png)
+
 ```
 # state.tf
 terraform {
