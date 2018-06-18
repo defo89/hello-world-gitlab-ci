@@ -6,6 +6,10 @@ It was created mainly for learning purposes and consists of the following buildi
 - Infrastructure is provisioned using [Terraform](https://www.terraform.io) module.
 - Gitlab CI orchestrates actions with Packer and Terraform.
 
+*Note*
+- Public and private keys provided are just for demo purposes 
+- You are encouraged to create your own ones and edit the *resource "aws_key_pair"* entry in the *aws-demo.tf* file
+
 ![AWS infra](img/infra.png)
 
 ## Terraform state
@@ -189,7 +193,8 @@ Bastion DNS Name = ec2-34-247-38-196.eu-west-1.compute.amazonaws.com
 Are you sure you want to continue connecting (yes/no)? yes
 ubuntu@ip-10-172-1-73:~$
 
-# ssh to the instance
+# ssh to the instance through the bastion host
+❯ ssh-add -K aws_fake_key
 ❯ ssh -A ubuntu@ec2-34-247-38-196.eu-west-1.compute.amazonaws.com
 ubuntu@ip-10-172-1-73:~$ ssh ec2-user@10.172.82.192
 Warning: Permanently added '10.172.82.192' (ECDSA) to the list of known hosts.
