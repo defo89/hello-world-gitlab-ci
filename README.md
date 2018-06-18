@@ -217,6 +217,13 @@ nginx (pid 2625 2622) is running...
 Destroy complete! Resources: 32 destroyed.
 ```
 
+AMI and snaphot needs to be removed manually.
+
+![AMI deregister](img/ami-deregister.png)
+
+![Snapshot delete](img/snapshot-delete.png)
+
+
 # Using Gitlab CI
 
 ## Configuration
